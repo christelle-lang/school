@@ -3,6 +3,9 @@
 @section('styleaffiche')
    <link rel="stylesheet" href="css/affiche.css">
 @endsection
+@section('jsaffiche')
+      <script src="{{asset('js/affiche.js')}}"></script>
+@endsection
 <body>
     <h3>LISTE DES COURS</h3>
     <table>
@@ -20,10 +23,25 @@
         <tbody>
             @foreach ($cours as $cour)
             <tr>
+                
                 <td>{{ $cour->id }}</td>
                 <td>{{ $cour->nom }}</td>
                 <td>{{ $cour->info }}</td>
-                <td><img src="{{asset($cour->image) }}" alt="image" height="65px" width="150px"></td>
+                {{-- {{$data=[]}}
+                 {{$data=json_decode($cour->image)}}
+                 {{dd($data)}}
+                <td> --}}
+                <td>   
+                 @foreach( json_decode($cour->image) as $img)
+                 <div class="carousel">
+                    <div class="carousel-container">
+                      <div class="carousel-slide">
+                        <img src="{{asset($img)}}" alt="image" height="65px" width="150px">
+                      </div>
+                    </div>
+                </div>
+                @endforeach
+               </td>
                 <td class="action">
                     <form action="{{ route('cours.supprimer', ['id' => $cour->id]) }}" method="POST">
                       @csrf

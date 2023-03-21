@@ -18,3 +18,15 @@ td, th{
     border: solid 1.4px black;
     padding: 2px;
 }
+.carousel {
+    width: 100%;
+    overflow: hidden;
+  }
+  .carousel-container {
+    display: flex;
+    width: 300%;
+  }
+  .carousel-slide {
+    width: 33.33%;
+  }
+  

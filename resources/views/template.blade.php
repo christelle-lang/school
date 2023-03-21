@@ -10,6 +10,7 @@
     @yield('styleaffiche')
     @yield('styleaccueil')
     @yield('jsajoue')
+    @yield('jsaffiche')
     <link rel="stylesheet" href="{{asset('css/template.css')}}">  
     <title>Document</title>
 </head>

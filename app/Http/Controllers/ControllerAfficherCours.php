@@ -8,7 +8,7 @@ class ControllerAfficherCours extends Controller
 {
     public function AfficheCours(){
     $cours = DB::table('cours')->get();
-    return view('afficherCours', ['cours' => $cours]);
+    return view('afficherCours', ['cours' => $cours] );
 }
 
 }

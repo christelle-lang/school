@@ -8,21 +8,23 @@ class ControllerAjouterCours extends Controller
 {
    public function AjouterCours(Request $request){
         $nom = $request->input('nom');
-
         $info = $request->input('info');
+        $images = $request->file('image');
+        $data = array();
 
-        $image = $_FILES['image']['name'];
-        $image = filter_var($image, FILTER_SANITIZE_STRING);
-        $image_tmp_name = $_FILES['image']['tmp_name'];
-        $image_folder = 'images/'.$image;
-        move_uploaded_file($image_tmp_name, $image_folder);
-        move_uploaded_file($image_tmp_name, $image_folder);
+        foreach($images as $image)  {
+            $image_nom = $image->getClientOriginalName();
+            $image_chemin = 'images/'.$image_nom;
+            $image->move(public_path('images'), $image_nom);
+            $data[] = $image_chemin;
+        }
 
-        $selectedItems = request('selectedItems');
+        $selectedItems = $request->input('selectedItems');
         $items = implode(',', $selectedItems);
-        DB::table('cours')->insert(['nom' => $nom, 'info' => $info, 'image' => $image_folder,'items' => $items,]);
+        DB::table('cours')->insert(['nom' => $nom, 'info' => $info, 'image' => json_encode($data), 'selection' => $items]);
         return redirect()->route('afficherCours');
     }
-
 }
+
+
 

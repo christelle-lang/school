@@ -22,7 +22,7 @@
 
                   <div>
                     <label for="image">Image</label>
-                    <input type="file" id="input-file" name="image" onchange="previewImage(event)">
+                    <input type="file" name="image[]" id="input-file" onchange="previewImage(event)" multiple>
                   </div>
 
                   <div class="d-flex justify-content-center ">
@@ -31,7 +31,7 @@
 
                     <div>
                     <label for="selectedItems">Selected Items:</label>
-                    <select name="selectedItems" id="selectedItems" multiple>
+                    <select name="selectedItems[]" id="selectedItems" multiple>
                         <option value="item1">Item 1</option>
                         <option value="item2">Item 2</option>
                         <option value="item3">Item 3</option>

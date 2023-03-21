@@ -1,0 +1,20 @@
+td, th{
+    border: solid 1px black;
+    width:200px;
+    height:75px;
+}
+.action{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.supprime{
+    background-color: rgb(184, 40, 40);
+    border: solid 1.4px black;
+    padding: 2px;
+}
+.modifie{
+    background-color: orange;
+    border: solid 1.4px black;
+    padding: 2px;
+}
